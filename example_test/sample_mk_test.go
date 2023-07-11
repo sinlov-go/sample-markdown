@@ -14,7 +14,7 @@ func TestGenerateText(t *testing.T) {
 		wantErr error
 	}{
 		{
-			name: "sample", // TODO: testData/TestGenerateText/sample.golden
+			name: "sample", // TODO: testdata/TestGenerateText/sample.golden
 			c: []sample_mk.Node{
 				sample_mk.NewHeader(2, "v1.0.0 (2020-01-18)"),
 				sample_mk.NewHeader(3, "Features"),

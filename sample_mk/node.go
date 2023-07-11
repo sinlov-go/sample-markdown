@@ -13,14 +13,14 @@ var listTokens = map[rune]struct{}{
 }
 
 // Node is single markdown syntax representation
-// Example: header, list, ...
+// Example: Header, ListItem, BasicItem ...
 type Node interface {
 	// String return string representation of node
 	String() string
 }
 
 // BasicItem
-// basic item node without any markdown syntax
+// basic item node without any markdown-syntax
 type BasicItem struct {
 	text string
 }

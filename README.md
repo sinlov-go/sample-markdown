@@ -52,6 +52,9 @@ $ echo "go mod vendor"
 
 ## Features
 
+- [X] `github.com/sinlov-go/sample-markdown/sample_mk`
+  - markdown nodes `sample_mk.GenerateText`
+  - `sample_mk.Parse` [] string to markdown nodes
 - [ ] more perfect test case coverage
 - [ ] more perfect benchmark case
 
@@ -69,10 +72,30 @@ $ echo "go mod vendor"
 
 ## usage
 
-- use this template, replace list below
-    - `github.com/sinlov-go/sample-markdown` to your package name
-    - `sinlov-go` to your owner name
-    - `sample-markdown` to your project name
+```go
+package main
+
+import (
+	"fmt"
+	"github.com/sinlov-go/sample-markdown/sample_mk"
+)
+
+func foo()  {
+
+  nodes := []sample_mk.Node{
+    sample_mk.NewHeader(2, "v1.0.0 (2020-01-18)"),
+    sample_mk.NewHeader(3, "Features"),
+    sample_mk.NewListItem("feat: new feature"),
+    sample_mk.NewHeader(3, "Bug Fixes"),
+    sample_mk.NewListItem("fix: new fix"),
+  }
+
+  result := sample_mk.GenerateText(nodes)
+  fmt.Printf("%s\n", result)
+}
+```
+
+- more example see [doc of sample_mk](https://pkg.go.dev/github.com/sinlov-go/sample-markdown/sample_mk)
 
 # dev
 

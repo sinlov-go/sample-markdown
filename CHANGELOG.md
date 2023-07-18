@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/sinlov-go/sample-markdown/compare/v1.2.0...v1.3.0) (2023-07-18)
+
+
+### ✨ Features
+
+* sample_mk.Header func Level() to get Level ([3d38c09](https://github.com/sinlov-go/sample-markdown/commit/3d38c09b1ec63b35481171d7ea5252776532cd59))
+
 ## [1.2.0](https://github.com/sinlov-go/sample-markdown/compare/v1.1.0...v1.2.0) (2023-07-18)
 
 

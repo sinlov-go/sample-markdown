@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/sinlov-go/sample-markdown/compare/v1.1.0...v1.2.0) (2023-07-18)
+
+
+### ✨ Features
+
+* add sample_mk.Node func Type() to get markdown node type ([324ad72](https://github.com/sinlov-go/sample-markdown/commit/324ad723cf2af4b49958813e3755c379eb4b9331))
+
 ## [1.1.0](https://github.com/sinlov-go/sample-markdown/compare/v1.0.0...v1.1.0) (2023-07-18)
 
 

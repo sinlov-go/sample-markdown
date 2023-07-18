@@ -67,25 +67,22 @@ func TestBasicItem(t *testing.T) {
 
 func TestHeaderString(t *testing.T) {
 	tests := []struct {
-		name   string
-		header Header
-		want   string
+		name      string
+		header    Header
+		want      string
+		wantLevel int
 	}{
 		{
-			name: "level 1",
-			header: Header{
-				level: 1,
-				text:  "abc",
-			},
-			want: "# abc",
+			name:      "level 1",
+			header:    NewHeader(1, "abc"),
+			want:      "# abc",
+			wantLevel: 1,
 		},
 		{
-			name: "level 3",
-			header: Header{
-				level: 3,
-				text:  "xyz",
-			},
-			want: "### xyz",
+			name:      "level 3",
+			header:    NewHeader(3, "xyz"),
+			want:      "### xyz",
+			wantLevel: 3,
 		},
 	}
 
@@ -93,6 +90,7 @@ func TestHeaderString(t *testing.T) {
 		t.Run(tc.name, func(t *testing.T) {
 			got := tc.header.String()
 			assert.Equal(t, tc.want, got)
+			assert.Equal(t, tc.wantLevel, tc.header.Level())
 		})
 	}
 }

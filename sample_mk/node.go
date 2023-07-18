@@ -93,6 +93,10 @@ func (h Header) Type() int {
 	return h.nodeType
 }
 
+func (h Header) Level() int {
+	return h.level
+}
+
 type ListItem struct {
 	nodeType int
 	text     string

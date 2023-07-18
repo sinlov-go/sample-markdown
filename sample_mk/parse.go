@@ -38,7 +38,10 @@ func Parse(lines []string) []Node {
 
 		if isListToken {
 			nodes = append(nodes, parseListItem(line))
+		} else {
+			nodes = append(nodes, parseBasicItem(line))
 		}
+
 	}
 
 	return nodes
@@ -66,4 +69,8 @@ func parseListItem(line string) ListItem {
 	}
 
 	return NewListItem(line)
+}
+
+func parseBasicItem(line string) BasicItem {
+	return NewBasicItem(line)
 }

@@ -66,6 +66,54 @@ func TestParse(t *testing.T) {
 				},
 			},
 		},
+		{
+			name: "line full type",
+			lines: []string{
+				"# abc",
+				"",
+				"info",
+				"",
+				"## Features",
+				"",
+				"- xyz",
+				"- foo",
+				"",
+				"## build",
+				"",
+				"- one",
+				"- two",
+				"",
+			},
+			want: []Node{
+				Header{
+					level: 1,
+					text:  "abc",
+				},
+				BasicItem{
+					text: "info",
+				},
+				Header{
+					level: 2,
+					text:  "Features",
+				},
+				ListItem{
+					text: "xyz",
+				},
+				ListItem{
+					text: "foo",
+				},
+				Header{
+					level: 2,
+					text:  "build",
+				},
+				ListItem{
+					text: "one",
+				},
+				ListItem{
+					text: "two",
+				},
+			},
+		},
 	}
 
 	for _, tc := range tests {

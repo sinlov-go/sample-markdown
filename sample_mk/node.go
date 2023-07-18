@@ -3,6 +3,12 @@ package sample_mk
 import "strings"
 
 const (
+	NodeTypeBasic = 1 + iota
+	NodeTypeHeader
+	NodeTypeListItem
+)
+
+const (
 	headerToken = '#'
 	listToken   = '-'
 )
@@ -17,12 +23,16 @@ var listTokens = map[rune]struct{}{
 type Node interface {
 	// String return string representation of node
 	String() string
+
+	// Type return type of node
+	Type() int
 }
 
 // BasicItem
 // basic item node without any markdown-syntax
 type BasicItem struct {
-	text string
+	nodeType int
+	text     string
 }
 
 // NewBasicItem
@@ -31,7 +41,8 @@ func NewBasicItem(text string) BasicItem {
 	text = strings.TrimSpace(text)
 
 	return BasicItem{
-		text: text,
+		nodeType: NodeTypeBasic,
+		text:     text,
 	}
 }
 
@@ -39,10 +50,15 @@ func (i BasicItem) String() string {
 	return i.text
 }
 
+func (i BasicItem) Type() int {
+	return i.nodeType
+}
+
 // Header is markdown header node
 type Header struct {
-	level int
-	text  string
+	nodeType int
+	level    int
+	text     string
 }
 
 // NewHeader
@@ -53,8 +69,9 @@ func NewHeader(level int, text string) Header {
 	text = strings.TrimSpace(text)
 
 	return Header{
-		level: level,
-		text:  text,
+		nodeType: NodeTypeHeader,
+		level:    level,
+		text:     text,
 	}
 }
 
@@ -72,20 +89,30 @@ func (h Header) String() string {
 	return builder.String()
 }
 
+func (h Header) Type() int {
+	return h.nodeType
+}
+
 type ListItem struct {
-	text string
+	nodeType int
+	text     string
 }
 
 func NewListItem(text string) ListItem {
 	text = strings.TrimSpace(text)
 
 	return ListItem{
-		text: text,
+		nodeType: NodeTypeListItem,
+		text:     text,
 	}
 }
 
 func (i ListItem) String() string {
 	return string(listToken) + " " + i.text
+}
+
+func (i ListItem) Type() int {
+	return i.nodeType
 }
 
 // Equal

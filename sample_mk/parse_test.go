@@ -18,13 +18,8 @@ func TestParse(t *testing.T) {
 				"- xyz",
 			},
 			want: []Node{
-				Header{
-					level: 1,
-					text:  "abc",
-				},
-				ListItem{
-					text: "xyz",
-				},
+				NewHeader(1, "abc"),
+				NewListItem("xyz"),
 			},
 		},
 		{
@@ -34,13 +29,8 @@ func TestParse(t *testing.T) {
 				"* abc",
 			},
 			want: []Node{
-				Header{
-					level: 3,
-					text:  "xyz",
-				},
-				ListItem{
-					text: "abc",
-				},
+				NewHeader(3, "xyz"),
+				NewListItem("abc"),
 			},
 		},
 		{
@@ -57,13 +47,8 @@ func TestParse(t *testing.T) {
 				"",
 			},
 			want: []Node{
-				Header{
-					level: 1,
-					text:  "abc",
-				},
-				ListItem{
-					text: "xyz",
-				},
+				NewHeader(1, "abc"),
+				NewListItem("xyz"),
 			},
 		},
 		{
@@ -85,33 +70,14 @@ func TestParse(t *testing.T) {
 				"",
 			},
 			want: []Node{
-				Header{
-					level: 1,
-					text:  "abc",
-				},
-				BasicItem{
-					text: "info",
-				},
-				Header{
-					level: 2,
-					text:  "Features",
-				},
-				ListItem{
-					text: "xyz",
-				},
-				ListItem{
-					text: "foo",
-				},
-				Header{
-					level: 2,
-					text:  "build",
-				},
-				ListItem{
-					text: "one",
-				},
-				ListItem{
-					text: "two",
-				},
+				NewHeader(1, "abc"),
+				NewBasicItem("info"),
+				NewHeader(2, "Features"),
+				NewListItem("xyz"),
+				NewListItem("foo"),
+				NewHeader(2, "build"),
+				NewListItem("one"),
+				NewListItem("two"),
 			},
 		},
 	}
@@ -133,18 +99,12 @@ func TestParseHeader(t *testing.T) {
 		{
 			name: "level 1",
 			line: "# abc",
-			want: Header{
-				level: 1,
-				text:  "abc",
-			},
+			want: NewHeader(1, "abc"),
 		},
 		{
 			name: "level 3",
 			line: "### xyz",
-			want: Header{
-				level: 3,
-				text:  "xyz",
-			},
+			want: NewHeader(3, "xyz"),
 		},
 	}
 
@@ -166,14 +126,16 @@ func TestParseListItem(t *testing.T) {
 			name: "normal",
 			line: "- abc",
 			want: ListItem{
-				text: "abc",
+				nodeType: NodeTypeListItem,
+				text:     "abc",
 			},
 		},
 		{
 			name: "alternative",
 			line: "* xyz",
 			want: ListItem{
-				text: "xyz",
+				nodeType: NodeTypeListItem,
+				text:     "xyz",
 			},
 		},
 	}

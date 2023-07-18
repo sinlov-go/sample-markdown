@@ -14,22 +14,11 @@ func TestGenerate(t *testing.T) {
 		{
 			name: "normal",
 			nodes: []Node{
-				BasicItem{
-					text: "start",
-				},
-				Header{
-					level: 1,
-					text:  "header",
-				},
-				ListItem{
-					text: "item 1",
-				},
-				ListItem{
-					text: "item 2",
-				},
-				BasicItem{
-					text: "end",
-				},
+				NewBasicItem("start"),
+				NewHeader(1, "header"),
+				NewListItem("item 1"),
+				NewListItem("item 2"),
+				NewBasicItem("end"),
 			},
 			want: "start\n\n# header\n\n- item 1\n\n- item 2\n\nend\n",
 		},

@@ -5,6 +5,41 @@ import (
 	"testing"
 )
 
+func TestNodeType(t *testing.T) {
+	// mock NodeType
+	tests := []struct {
+		name    string
+		node    Node
+		wantRes int
+	}{
+		{
+			name:    "NewBasicItem",
+			node:    NewBasicItem("foo"),
+			wantRes: NodeTypeBasic,
+		},
+		{
+			name:    "NewHeader",
+			node:    NewHeader(2, "foo"),
+			wantRes: NodeTypeHeader,
+		},
+		{
+			name:    "NewListItem",
+			node:    NewListItem("bar"),
+			wantRes: NodeTypeListItem,
+		},
+	}
+
+	for _, tc := range tests {
+		t.Run(tc.name, func(t *testing.T) {
+
+			// do NodeType
+
+			// verify NodeType
+			assert.Equal(t, tc.wantRes, tc.node.Type())
+		})
+	}
+}
+
 func TestBasicItem(t *testing.T) {
 	// mock BasicItem
 	tests := []struct {
@@ -14,11 +49,9 @@ func TestBasicItem(t *testing.T) {
 		wantErr error
 	}{
 		{
-			name: "sample",
-			c:    "abc",
-			wantRes: BasicItem{
-				text: "abc",
-			},
+			name:    "sample",
+			c:       "abc",
+			wantRes: NewBasicItem("abc"),
 		},
 	}
 	for _, tc := range tests {

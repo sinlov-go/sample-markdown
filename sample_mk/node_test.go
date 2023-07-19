@@ -106,7 +106,7 @@ func TestListItemString(t *testing.T) {
 			listItem: ListItem{
 				text: "abc",
 			},
-			want: "- abc",
+			want: "* abc",
 		},
 	}
 

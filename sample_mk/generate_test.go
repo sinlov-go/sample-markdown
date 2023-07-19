@@ -20,7 +20,7 @@ func TestGenerate(t *testing.T) {
 				NewListItem("item 2"),
 				NewBasicItem("end"),
 			},
-			want: "start\n\n# header\n\n- item 1\n\n- item 2\n\nend\n",
+			want: "start\n\n# header\n\n* item 1\n\n* item 2\n\nend\n",
 		},
 	}
 

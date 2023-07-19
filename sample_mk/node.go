@@ -10,12 +10,12 @@ const (
 
 const (
 	headerToken = '#'
-	listToken   = '-'
+	listToken   = '*'
 )
 
 var listTokens = map[rune]struct{}{
 	listToken: {},
-	'*':       {},
+	'-':       {},
 }
 
 // Node is single markdown syntax representation
